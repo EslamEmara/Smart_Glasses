@@ -1,0 +1,367 @@
+
+Smart_Glasses_Grauation_Project.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001e6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000074  00800060  000001e6  0000027a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  008000d4  008000d4  000002ee  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002ee  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000320  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000100  00000000  00000000  0000035c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000127c  00000000  00000000  0000045c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000009b3  00000000  00000000  000016d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000098c  00000000  00000000  0000208b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001b4  00000000  00000000  00002a18  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000824  00000000  00000000  00002bcc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000048f  00000000  00000000  000033f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a0  00000000  00000000  0000387f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	8a c0       	rjmp	.+276    	; 0x128 <__vector_9>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e6 ee       	ldi	r30, 0xE6	; 230
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a4 3d       	cpi	r26, 0xD4	; 212
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	20 e0       	ldi	r18, 0x00	; 0
+  4a:	a4 ed       	ldi	r26, 0xD4	; 212
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	aa 3d       	cpi	r26, 0xDA	; 218
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	20 d0       	rcall	.+64     	; 0x9a <main>
+  5a:	c3 c0       	rjmp	.+390    	; 0x1e2 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <INIT_Fucntions>:
+#include "APP.h"
+
+
+
+void INIT_Fucntions(void)
+{
+  5e:	cf 93       	push	r28
+  60:	df 93       	push	r29
+  62:	00 d0       	rcall	.+0      	; 0x64 <INIT_Fucntions+0x6>
+  64:	cd b7       	in	r28, 0x3d	; 61
+  66:	de b7       	in	r29, 0x3e	; 62
+	ADC_ConfigType adc_configuration = {INTERNAL_256VOLT,FCPU_2} , *adc_configuration_ptr = &adc_configuration;
+  68:	83 e0       	ldi	r24, 0x03	; 3
+  6a:	89 83       	std	Y+1, r24	; 0x01
+  6c:	1a 82       	std	Y+2, r1	; 0x02
+	TIMER0_CONFIG *tconfig = {COMPARE_MODE,0,250,CLK_NO_PRESCALAR};
+	ADC_init(adc_configuration_ptr);
+  6e:	ce 01       	movw	r24, r28
+  70:	01 96       	adiw	r24, 0x01	; 1
+  72:	28 d0       	rcall	.+80     	; 0xc4 <ADC_init>
+	uart_init();
+  74:	82 d0       	rcall	.+260    	; 0x17a <uart_init>
+	UART_sendString("eshta8al");
+  76:	80 e6       	ldi	r24, 0x60	; 96
+  78:	90 e0       	ldi	r25, 0x00	; 0
+  7a:	8d d0       	rcall	.+282    	; 0x196 <UART_sendString>
+	timer0_init();
+  7c:	48 d0       	rcall	.+144    	; 0x10e <timer0_init>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  7e:	2f e7       	ldi	r18, 0x7F	; 127
+  80:	8a e1       	ldi	r24, 0x1A	; 26
+  82:	96 e0       	ldi	r25, 0x06	; 6
+  84:	21 50       	subi	r18, 0x01	; 1
+  86:	80 40       	sbci	r24, 0x00	; 0
+  88:	90 40       	sbci	r25, 0x00	; 0
+  8a:	e1 f7       	brne	.-8      	; 0x84 <INIT_Fucntions+0x26>
+  8c:	00 c0       	rjmp	.+0      	; 0x8e <INIT_Fucntions+0x30>
+  8e:	00 00       	nop
+	_delay_ms(2000);
+}
+  90:	0f 90       	pop	r0
+  92:	0f 90       	pop	r0
+  94:	df 91       	pop	r29
+  96:	cf 91       	pop	r28
+  98:	08 95       	ret
+
+0000009a <main>:
+		uint16 start_time1 = 0;
+
+	uint8 swipe = 0;
+		uint8 swipe1 = 0;
+
+		INIT_Fucntions();	
+  9a:	e1 df       	rcall	.-62     	; 0x5e <INIT_Fucntions>
+    while(1)
+    {		
+		
+		
+		UART_sendByte(IR_getDistance(2));
+  9c:	82 e0       	ldi	r24, 0x02	; 2
+  9e:	90 e0       	ldi	r25, 0x00	; 0
+  a0:	02 d0       	rcall	.+4      	; 0xa6 <IR_getDistance>
+  a2:	75 d0       	rcall	.+234    	; 0x18e <UART_sendByte>
+  a4:	fb cf       	rjmp	.-10     	; 0x9c <main+0x2>
+
+000000a6 <IR_getDistance>:
+  a6:	24 d0       	rcall	.+72     	; 0xf0 <ADC_readChannel>
+  a8:	8a 30       	cpi	r24, 0x0A	; 10
+  aa:	91 05       	cpc	r25, r1
+  ac:	48 f0       	brcs	.+18     	; 0xc0 <IR_getDistance+0x1a>
+  ae:	bc 01       	movw	r22, r24
+  b0:	69 50       	subi	r22, 0x09	; 9
+  b2:	71 09       	sbc	r23, r1
+  b4:	8a e6       	ldi	r24, 0x6A	; 106
+  b6:	9a e1       	ldi	r25, 0x1A	; 26
+  b8:	80 d0       	rcall	.+256    	; 0x1ba <__udivmodhi4>
+  ba:	8c ef       	ldi	r24, 0xFC	; 252
+  bc:	86 0f       	add	r24, r22
+  be:	08 95       	ret
+  c0:	80 e0       	ldi	r24, 0x00	; 0
+  c2:	08 95       	ret
+
+000000c4 <ADC_init>:
+  c4:	fc 01       	movw	r30, r24
+  c6:	90 81       	ld	r25, Z
+  c8:	92 95       	swap	r25
+  ca:	99 0f       	add	r25, r25
+  cc:	99 0f       	add	r25, r25
+  ce:	90 7c       	andi	r25, 0xC0	; 192
+  d0:	97 b9       	out	0x07, r25	; 7
+  d2:	96 b1       	in	r25, 0x06	; 6
+  d4:	97 7f       	andi	r25, 0xF7	; 247
+  d6:	96 b9       	out	0x06, r25	; 6
+  d8:	86 b1       	in	r24, 0x06	; 6
+  da:	91 81       	ldd	r25, Z+1	; 0x01
+  dc:	88 7f       	andi	r24, 0xF8	; 248
+  de:	89 2b       	or	r24, r25
+  e0:	86 b9       	out	0x06, r24	; 6
+  e2:	86 b1       	in	r24, 0x06	; 6
+  e4:	8f 7d       	andi	r24, 0xDF	; 223
+  e6:	86 b9       	out	0x06, r24	; 6
+  e8:	86 b1       	in	r24, 0x06	; 6
+  ea:	80 68       	ori	r24, 0x80	; 128
+  ec:	86 b9       	out	0x06, r24	; 6
+  ee:	08 95       	ret
+
+000000f0 <ADC_readChannel>:
+  f0:	97 b1       	in	r25, 0x07	; 7
+  f2:	90 7f       	andi	r25, 0xF0	; 240
+  f4:	89 2b       	or	r24, r25
+  f6:	87 b9       	out	0x07, r24	; 7
+  f8:	86 b1       	in	r24, 0x06	; 6
+  fa:	80 64       	ori	r24, 0x40	; 64
+  fc:	86 b9       	out	0x06, r24	; 6
+  fe:	34 9b       	sbis	0x06, 4	; 6
+ 100:	fe cf       	rjmp	.-4      	; 0xfe <ADC_readChannel+0xe>
+ 102:	86 b1       	in	r24, 0x06	; 6
+ 104:	80 61       	ori	r24, 0x10	; 16
+ 106:	86 b9       	out	0x06, r24	; 6
+ 108:	84 b1       	in	r24, 0x04	; 4
+ 10a:	95 b1       	in	r25, 0x05	; 5
+ 10c:	08 95       	ret
+
+0000010e <timer0_init>:
+
+// initialize timer, interrupt and variable
+void timer0_init()
+{
+	// set up timer with prescaler = 256
+	TCCR0 |= (1 << CS00);
+ 10e:	83 b7       	in	r24, 0x33	; 51
+ 110:	81 60       	ori	r24, 0x01	; 1
+ 112:	83 bf       	out	0x33, r24	; 51
+	
+	// initialize counter
+	TCNT0 = 0;
+ 114:	12 be       	out	0x32, r1	; 50
+	
+	// enable overflow interrupt
+	TIMSK |= (1 << TOIE0);
+ 116:	89 b7       	in	r24, 0x39	; 57
+ 118:	81 60       	ori	r24, 0x01	; 1
+ 11a:	89 bf       	out	0x39, r24	; 57
+	
+	// enable global interrupts
+	sei();
+ 11c:	78 94       	sei
+	
+	// initialize overflow counter variable
+	tot_overflow = 0;
+ 11e:	10 92 d5 00 	sts	0x00D5, r1	; 0x8000d5 <__data_end+0x1>
+ 122:	10 92 d4 00 	sts	0x00D4, r1	; 0x8000d4 <__data_end>
+ 126:	08 95       	ret
+
+00000128 <__vector_9>:
+}
+
+// TIMER0 overflow interrupt service routine
+// called whenever TCNT0 overflows
+ISR(TIMER0_OVF_vect)
+{
+ 128:	1f 92       	push	r1
+ 12a:	0f 92       	push	r0
+ 12c:	0f b6       	in	r0, 0x3f	; 63
+ 12e:	0f 92       	push	r0
+ 130:	11 24       	eor	r1, r1
+ 132:	8f 93       	push	r24
+ 134:	9f 93       	push	r25
+	// keep a track of number of overflows
+	tot_overflow++;
+ 136:	80 91 d4 00 	lds	r24, 0x00D4	; 0x8000d4 <__data_end>
+ 13a:	90 91 d5 00 	lds	r25, 0x00D5	; 0x8000d5 <__data_end+0x1>
+ 13e:	01 96       	adiw	r24, 0x01	; 1
+ 140:	90 93 d5 00 	sts	0x00D5, r25	; 0x8000d5 <__data_end+0x1>
+ 144:	80 93 d4 00 	sts	0x00D4, r24	; 0x8000d4 <__data_end>
+		tot_overflow1++;
+ 148:	80 91 d8 00 	lds	r24, 0x00D8	; 0x8000d8 <tot_overflow1>
+ 14c:	90 91 d9 00 	lds	r25, 0x00D9	; 0x8000d9 <tot_overflow1+0x1>
+ 150:	01 96       	adiw	r24, 0x01	; 1
+ 152:	90 93 d9 00 	sts	0x00D9, r25	; 0x8000d9 <tot_overflow1+0x1>
+ 156:	80 93 d8 00 	sts	0x00D8, r24	; 0x8000d8 <tot_overflow1>
+				tot_overfloww++;
+ 15a:	80 91 d6 00 	lds	r24, 0x00D6	; 0x8000d6 <tot_overfloww>
+ 15e:	90 91 d7 00 	lds	r25, 0x00D7	; 0x8000d7 <tot_overfloww+0x1>
+ 162:	01 96       	adiw	r24, 0x01	; 1
+ 164:	90 93 d7 00 	sts	0x00D7, r25	; 0x8000d7 <tot_overfloww+0x1>
+ 168:	80 93 d6 00 	sts	0x00D6, r24	; 0x8000d6 <tot_overfloww>
+
+
+ 16c:	9f 91       	pop	r25
+ 16e:	8f 91       	pop	r24
+ 170:	0f 90       	pop	r0
+ 172:	0f be       	out	0x3f, r0	; 63
+ 174:	0f 90       	pop	r0
+ 176:	1f 90       	pop	r1
+ 178:	18 95       	reti
+
+0000017a <uart_init>:
+ 17a:	10 bc       	out	0x20, r1	; 32
+ 17c:	89 e1       	ldi	r24, 0x19	; 25
+ 17e:	89 b9       	out	0x09, r24	; 9
+ 180:	8a b1       	in	r24, 0x0a	; 10
+ 182:	88 61       	ori	r24, 0x18	; 24
+ 184:	8a b9       	out	0x0a, r24	; 10
+ 186:	80 b5       	in	r24, 0x20	; 32
+ 188:	86 68       	ori	r24, 0x86	; 134
+ 18a:	80 bd       	out	0x20, r24	; 32
+ 18c:	08 95       	ret
+
+0000018e <UART_sendByte>:
+ 18e:	5d 9b       	sbis	0x0b, 5	; 11
+ 190:	fe cf       	rjmp	.-4      	; 0x18e <UART_sendByte>
+ 192:	8c b9       	out	0x0c, r24	; 12
+ 194:	08 95       	ret
+
+00000196 <UART_sendString>:
+ 196:	0f 93       	push	r16
+ 198:	1f 93       	push	r17
+ 19a:	cf 93       	push	r28
+ 19c:	8c 01       	movw	r16, r24
+ 19e:	c0 e0       	ldi	r28, 0x00	; 0
+ 1a0:	02 c0       	rjmp	.+4      	; 0x1a6 <UART_sendString+0x10>
+ 1a2:	f5 df       	rcall	.-22     	; 0x18e <UART_sendByte>
+ 1a4:	cf 5f       	subi	r28, 0xFF	; 255
+ 1a6:	f8 01       	movw	r30, r16
+ 1a8:	ec 0f       	add	r30, r28
+ 1aa:	f1 1d       	adc	r31, r1
+ 1ac:	80 81       	ld	r24, Z
+ 1ae:	81 11       	cpse	r24, r1
+ 1b0:	f8 cf       	rjmp	.-16     	; 0x1a2 <UART_sendString+0xc>
+ 1b2:	cf 91       	pop	r28
+ 1b4:	1f 91       	pop	r17
+ 1b6:	0f 91       	pop	r16
+ 1b8:	08 95       	ret
+
+000001ba <__udivmodhi4>:
+ 1ba:	aa 1b       	sub	r26, r26
+ 1bc:	bb 1b       	sub	r27, r27
+ 1be:	51 e1       	ldi	r21, 0x11	; 17
+ 1c0:	07 c0       	rjmp	.+14     	; 0x1d0 <__udivmodhi4_ep>
+
+000001c2 <__udivmodhi4_loop>:
+ 1c2:	aa 1f       	adc	r26, r26
+ 1c4:	bb 1f       	adc	r27, r27
+ 1c6:	a6 17       	cp	r26, r22
+ 1c8:	b7 07       	cpc	r27, r23
+ 1ca:	10 f0       	brcs	.+4      	; 0x1d0 <__udivmodhi4_ep>
+ 1cc:	a6 1b       	sub	r26, r22
+ 1ce:	b7 0b       	sbc	r27, r23
+
+000001d0 <__udivmodhi4_ep>:
+ 1d0:	88 1f       	adc	r24, r24
+ 1d2:	99 1f       	adc	r25, r25
+ 1d4:	5a 95       	dec	r21
+ 1d6:	a9 f7       	brne	.-22     	; 0x1c2 <__udivmodhi4_loop>
+ 1d8:	80 95       	com	r24
+ 1da:	90 95       	com	r25
+ 1dc:	bc 01       	movw	r22, r24
+ 1de:	cd 01       	movw	r24, r26
+ 1e0:	08 95       	ret
+
+000001e2 <_exit>:
+ 1e2:	f8 94       	cli
+
+000001e4 <__stop_program>:
+ 1e4:	ff cf       	rjmp	.-2      	; 0x1e4 <__stop_program>
