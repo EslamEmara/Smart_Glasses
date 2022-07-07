@@ -14,6 +14,8 @@
 #ifndef PWM_H_
 #define PWM_H_
 
+#include <avr/io.h>
+#include "gpio.h"
 #include "std_types.h"
 
 #define PERCENTAGE 100

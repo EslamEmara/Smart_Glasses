@@ -10,8 +10,9 @@
  *
  *******************************************************************************/
 
-#include <avr/io.h>
+
 #include "adc.h"
+
 
 void ADC_init(const ADC_ConfigType * Config_Ptr)
 {
@@ -44,7 +45,7 @@ uint16 ADC_readChannel(uint8 Ch_num)
 		ADMUX = (ADMUX & 0xF0) | Ch_num; /*PUT CH_NUM IN THE FIRST 4 BITS OF ADMUX */
 		SET_BIT(ADCSRA,ADSC);
 		while(BIT_IS_CLEAR(ADCSRA,ADIF));
-		SET_BIT(ADCSRA,ADIF); /*CLEARING THE BIT BY WRITING 1 TO IT*/
 		data = ADC;
+		SET_BIT(ADCSRA,ADIF); /*CLEARING THE BIT BY WRITING 1 TO IT*/
 		return data;
 }

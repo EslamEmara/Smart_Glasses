@@ -12,24 +12,38 @@
 
 #include "ir_sensor.h"
 
+
+long map(long x, long in_min, long in_max, long out_min, long out_max) {
+	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+void sort(int a[], int size)
+{
+	for(int i=0; i<(size-1); i++) {
+		int flag = 1;
+		for(int o=0; o<(size-(i+1)); o++) {
+			if(a[o] > a[o+1]) {
+				int t = a[o];
+				a[o] = a[o+1];
+				a[o+1] = t;
+				flag = 0;
+			}
+		}
+		if (flag) break;
+	}
+}
+
 uint8 IR_getDistance(uint8 channel_input_id)
 {
-	uint8 distance = 0;
-	uint16 adc_value = 0;
-	const uint16 k = 6762;
-	const uint8 a = 9;
-	const uint8 b = 4;
-
-
-	/* Read ADC channel where the IR sensor is connected */
-	adc_value = ADC_readChannel(channel_input_id); //depends o which channel we will connect to the IR
-	
-	if(adc_value <= a)
-	{
-		return 0;
+	int ir_val[25];
+	uint8 distanceCM;
+	for (uint8 i=0; i<25; i++){
+		// Read analog value
+		ir_val[i] = ADC_readChannel(channel_input_id);
 	}
-
-	distance = (uint8)((k/(adc_value - a)) - b);
 	
-	return distance;
+	// Sort it
+	sort(ir_val,25);
+	distanceCM = 27.728 * pow(map(ir_val[25 / 2], 0, 1023, 0, 5000)/1000.0, -1.2045);
+	return distanceCM;
 }

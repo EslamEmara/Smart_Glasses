@@ -3,7 +3,12 @@
 
  extern uint16 tot_overflow;
  extern uint16 tot_overflow1;
- extern uint16 tot_overfloww;
+ extern uint16 tot_overflow2;
+ 
+ extern uint16 timer_l;
+ extern uint16 timer_r;
+ extern uint16 timer_m;
+
 
 // initialize timer, interrupt and variable
 void timer0_init()
@@ -30,8 +35,13 @@ ISR(TIMER0_OVF_vect)
 {
 	// keep a track of number of overflows
 	tot_overflow++;
-		tot_overflow1++;
-				tot_overfloww++;
+	tot_overflow1++;
+	tot_overflow2++;
+	
+	
+	timer_l++;
+	timer_r++;
+	timer_m++;
 
 
 }

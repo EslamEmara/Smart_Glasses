@@ -13,13 +13,17 @@
 #ifndef IR_SENSOR_H_
 #define IR_SENSOR_H_
 
+
 #include "../MCAL/std_types.h"
 #include "../MCAL/adc.h"
-
+#include <math.h>
 
 /*******************************************************************************
  *                              Functions Prototypes                           *
  *******************************************************************************/
+
+void sort(int a[], int size);
+
 uint8 IR_getDistance(uint8 channel_input_id);
 
 #endif /* IR_SENSOR_H_ */

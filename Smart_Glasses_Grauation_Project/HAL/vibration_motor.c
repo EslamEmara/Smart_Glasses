@@ -12,12 +12,34 @@
 
 #include "vibration_motor.h"
 
-void START_Vibration_Motor(uint8 motor_number , uint8 motor_speed)
+void START_Vibration_Motor
+
+
+
+
+
+
+
+
+
+
+
+(uint8 motor_number , uint8 motor_speed)
 {
-	switch(motor_number)
+	if(motor_number == 0)
 	{
-		case 0 : PWM_Timer1_A_Start(motor_speed); break;
-		case 1 : PWM_Timer2_Start(motor_speed); break;
-		case 2 : PWM_Timer1_B_Start(motor_speed); break;
+		PWM_Timer1_A_Start(motor_speed);
+	}
+	else if(motor_number == 1)
+	{
+		PWM_Timer2_Start(motor_speed);
+	}
+	else if(motor_number == 2)
+	{
+		PWM_Timer1_B_Start(motor_speed);
+	}
+	else
+	{
+		return;
 	}
 }
